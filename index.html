@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPN من</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0f172a;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .status {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #94a3b8;
+    }
+    .btn {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #38bdf8;
+      background: #1e293b;
+      color: #38bdf8;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      transition: all 0.3s ease;
+    }
+    .btn.connected {
+      border-color: #22c55e;
+      color: #22c55e;
+      box-shadow: 0 0 25px rgba(34, 197, 94, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="status" id="statusText">قطع هستید</div>
+  <button class="btn" id="connectBtn" onclick="toggleVPN()">اتصال</button>
+
+  <script>
+    let isConnected = false;
+    function toggleVPN() {
+      const btn = document.getElementById('connectBtn');
+      const status = document.getElementById('statusText');
+      
+      isConnected = !isConnected;
+      if (isConnected) {
+        btn.classList.add('connected');
+        btn.innerText = 'قطع اتصال';
+        status.innerText = 'متصل شد';
+        status.style.color = '#22c55e';
+      } else {
+        btn.classList.remove('connected');
+        btn.innerText = 'اتصال';
+        status.innerText = 'قطع هستید';
+        status.style.color = '#94a3b8';
+      }
+    }
+  </script>
+</body>
+</html>
